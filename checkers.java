@@ -8,24 +8,24 @@ public class checkers {
 							{"x","r","x","r","x","r","x","r", },
 							{"-","x","-","x","-","x","-","x", },
 							{"x","-","x","-","x","-","x","-", },
-							{"b","x","b","x","b","x","b","-", },
+							{"b","x","b","x","b","x","b","x", },
 							{"x","b","x","b","x","b","x","b", },
 							{"b","x","b","x","b","x","b","x", },
 								};
 		display(mat);
 		while(statusRed(mat) == true && statusBlack(mat) == true)
 		{	System.out.println(" ");
-			System.out.println("Enter first the piece you want to move in (row,column) and second where you would like to move 
-			it to in (row,column)");
+			System.out.println("Enter first where you would like to move it to in (column,row) and " +
+								"second  the piece you want to move in (column,row)");
 			int x1 = reader.nextInt();
 			int y1 = reader.nextInt();
 			int x = reader.nextInt();
 			int y = reader.nextInt();
-			move(mat, x1, y1, x , y);
+			move(mat, y1, x1, x , y);
 			display(mat);
-			System.out.println(" ");
+			
 		}
-		move(mat, 3, 6, 2 , 5);
+
 		display(mat);
 		
 			}
@@ -50,8 +50,8 @@ return false;
 }
 public static void display(String[][] mat){
 	//String alpha and numbers add the coordinate system for movement
-	String alpha = "12345678";
-	String numbers = "12345678";
+	String alpha = "01234567";
+	String numbers = "01234567";
 	for (int i = 0; i < mat.length; i++) {
 	 
 		for (int j = 0; j < mat[i].length; j++) {
@@ -67,13 +67,11 @@ public static void display(String[][] mat){
 		System.out.print(temp1+"\t"); 
 	}
 	
-}
+}		
 public static void move(String[][] mat, int x1, int y1, int x, int y){
 	String z = mat[x1][y1];
-	if (z.equals("x"))
+	if (z.equals("x")||mat[x][y].equals("x"))
 		System.out.println("You cant move there!");
-	else if(z.equals("r") || z.equals("b"))
-		System.out.println("You cant move directly on a piece!");
 	else{
 	mat[x1][y1] = mat[x][y];
 	mat[x][y] = z;
