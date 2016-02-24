@@ -1,5 +1,5 @@
 import java.util.*;
-public class chess {
+public class checkers {
 	public static void main(String[] args) {
 		Scanner reader = new Scanner(System.in);
 		//board
@@ -13,7 +13,7 @@ public class chess {
 							{"b","x","b","x","b","x","b","x", },
 								};
 		display(mat);
-		while(statusRed(mat) == true || statusBlack(mat) == true)
+		while(statusRed(mat) == true && statusBlack(mat) == true)
 		{	System.out.println(" ");
 			System.out.println("Enter first the piece you want to move in (row,column) and second where you would like to move 
 			it to in (row,column)");
