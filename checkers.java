@@ -15,7 +15,8 @@ public class chess {
 		display(mat);
 		while(statusRed(mat) == true || statusBlack(mat) == true)
 		{	System.out.println(" ");
-			System.out.println("Enter first the piece you want to move in (row,column) and second where you would like to move it to in (row,column)");
+			System.out.println("Enter first the piece you want to move in (row,column) and second where you would like to move 
+			it to in (row,column)");
 			int x1 = reader.nextInt();
 			int y1 = reader.nextInt();
 			int x = reader.nextInt();
