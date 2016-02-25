@@ -15,13 +15,13 @@ public class checkers {
 		display(mat);
 		while(statusRed(mat) == true && statusBlack(mat) == true)
 		{	System.out.println(" ");
-			System.out.println("Enter first where you would like to move it to in (column,row) and " +
-								"second  the piece you want to move in (column,row)");
+			System.out.println("Enter first where you would like to move it to in (row,column) and " +
+								"second  the piece you want to move in (row,column)");
 			int x1 = reader.nextInt();
 			int y1 = reader.nextInt();
 			int x = reader.nextInt();
 			int y = reader.nextInt();
-			move(mat, y1, x1, x , y);
+			move(mat, x1, y1, x , y);
 			display(mat);
 			
 		}
