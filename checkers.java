@@ -15,13 +15,13 @@ public class checkers {
 		display(mat);
 		while(statusRed(mat) == true && statusBlack(mat) == true)
 		{	System.out.println(" ");
-			System.out.println("Enter first where you would like to move it to in (row,column) and " +
-								"second  the piece you want to move in (row,column)");
-			int x1 = reader.nextInt();
-			int y1 = reader.nextInt();
-			int x = reader.nextInt();
-			int y = reader.nextInt();
-			move(mat, x1, y1, x , y);
+			System.out.println("Enter first where you would like to move it to in (column,row) and " +
+								"second  the piece you want to move in (column,row)");
+			int x1 = reader.nextInt() - 1;
+			int y1 = reader.nextInt() - 1;
+			int x = reader.nextInt() - 1;
+			int y = reader.nextInt() - 1;
+			move(mat, y1, x1, y , x);
 			display(mat);
 			
 		}
@@ -50,8 +50,8 @@ return false;
 }
 public static void display(String[][] mat){
 	//String alpha and numbers add the coordinate system for movement
-	String alpha = "01234567";
-	String numbers = "01234567";
+	String alpha = "12345678";
+	String numbers = "12345678s";
 	for (int i = 0; i < mat.length; i++) {
 	 
 		for (int j = 0; j < mat[i].length; j++) {
