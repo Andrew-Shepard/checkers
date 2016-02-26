@@ -51,7 +51,7 @@ return false;
 public static void display(String[][] mat){
 	//String alpha and numbers add the coordinate system for movement
 	String alpha = "12345678";
-	String numbers = "12345678s";
+	String numbers = "12345678";
 	for (int i = 0; i < mat.length; i++) {
 	 
 		for (int j = 0; j < mat[i].length; j++) {
@@ -70,9 +70,53 @@ public static void display(String[][] mat){
 }		
 public static void move(String[][] mat, int x1, int y1, int x, int y){
 	String z = mat[x1][y1];
+	//moving forward error
 	if (z.equals("x")||mat[x][y].equals("x"))
 		System.out.println("You cant move there!");
-	else{
+	//(single)Jumping a red dsntwrk..
+	else if ( mat[x-1][y-1].equals("r") && !mat[x-1][y-1].equals(mat[x][y]) ){
+		mat[x1][y1] = mat[x][y];
+		mat[x][y] = z;
+		mat[x-1][y-1] = "-";
+	}
+	else if ( mat[x+1][y+1].equals("r") && !mat[x-1][y-1].equals(mat[x][y]) ){
+		mat[x1][y1] = mat[x][y];
+		mat[x][y] = z;
+		mat[x+1][y+1] = "-";
+	}
+	else if ( mat[x-1][y+1].equals("r") && !mat[x-1][y-1].equals(mat[x][y]) ){
+		mat[x1][y1] = mat[x][y];
+		mat[x][y] = z;
+		mat[x-1][y+1] = "-";
+	}
+	else if ( mat[x+1][y-1].equals("r") && !mat[x-1][y-1].equals(mat[x][y]) ){
+		mat[x1][y1] = mat[x][y];
+		mat[x][y] = z;
+		mat[x+1][y-1] = "-";
+	}
+	//(single)Jumping a black dsntwrk...
+	else if ( mat[x-1][y-1].equals("b") && !mat[x-1][y-1].equals(mat[x][y]) ){
+		mat[x1][y1] = mat[x][y];
+		mat[x][y] = z;
+		mat[x-1][y-1] = "-";
+	}
+	else if ( mat[x+1][y+1].equals("b") && !mat[x-1][y-1].equals(mat[x][y]) ){
+		mat[x1][y1] = mat[x][y];
+		mat[x][y] = z;
+		mat[x+1][y+1] = "-";
+	}
+	else if ( mat[x-1][y+1].equals("b") && !mat[x-1][y-1].equals(mat[x][y]) ){
+		mat[x1][y1] = mat[x][y];
+		mat[x][y] = z;
+		mat[x-1][y+1] = "-";
+	}
+	else if ( mat[x+1][y-1].equals("b") && !mat[x-1][y-1].equals(mat[x][y]) ){
+		mat[x1][y1] = mat[x][y];
+		mat[x][y] = z;
+		mat[x+1][y-1] = "-";
+	}
+	//Normal movement
+	else {
 	mat[x1][y1] = mat[x][y];
 	mat[x][y] = z;
 	}
