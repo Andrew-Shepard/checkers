@@ -15,8 +15,8 @@ public class checkers {
 		display(mat);
 		while(statusRed(mat) == true && statusBlack(mat) == true)
 		{	System.out.println(" ");
-			System.out.println("Enter first where you would like to move it to in (column,row) and " +
-								"second  the piece you want to move in (column,row)");
+			System.out.println("Enter first  (column,row) and the piece you want to move in " +
+								"secondwhere you would like to move it to in(column,row)");
 			int x1 = reader.nextInt() - 1;
 			int y1 = reader.nextInt() - 1;
 			int x = reader.nextInt() - 1;
@@ -73,50 +73,57 @@ public static void move(String[][] mat, int x1, int y1, int x, int y){
 	//moving forward error
 	if (z.equals("x")||mat[x][y].equals("x"))
 		System.out.println("You cant move there!");
-	//(single)Jumping a red dsntwrk..
-	else if ( mat[x-1][y-1].equals("r") && !mat[x-1][y-1].equals(mat[x][y]) ){
+	//(single)Jumping a red 
+	
+	else if (x1 !=0 && y1 !=0){
+		if ( mat[x1-1][y1-1].equals("r") && !mat[x1-1][y1-1].equals(mat[x][y]) && (x1-x)%2 == 0 && (y1-y)%2 == 0){
 		mat[x1][y1] = mat[x][y];
 		mat[x][y] = z;
-		mat[x-1][y-1] = "-";
+		mat[x1-1][y1-1] = "-";
+		}
 	}
-	else if ( mat[x+1][y+1].equals("r") && !mat[x-1][y-1].equals(mat[x][y]) ){
+	else if ( mat[x1+1][y1+1].equals("r") && !mat[x1-1][y1-1].equals(mat[x][y]) && (x1-x)%2 == 0 && (y1-y)%2 == 0 ){
 		mat[x1][y1] = mat[x][y];
 		mat[x][y] = z;
-		mat[x+1][y+1] = "-";
+		mat[x1+1][y1+1] = "-";
 	}
-	else if ( mat[x-1][y+1].equals("r") && !mat[x-1][y-1].equals(mat[x][y]) ){
+	else if (x1 != 0){
+		if ( mat[x1-1][y1+1].equals("r") && !mat[x1-1][y1-1].equals(mat[x][y]) && (x1-x)%2 == 0 && (y1-y)%2 == 0 ){
 		mat[x1][y1] = mat[x][y];
 		mat[x][y] = z;
-		mat[x-1][y+1] = "-";
+		mat[x1-1][y1+1] = "-";
+		}
 	}
-	else if ( mat[x+1][y-1].equals("r") && !mat[x-1][y-1].equals(mat[x][y]) ){
+	else if (y1 != 0){
+		if ( mat[x1+1][y1-1].equals("r") && !mat[x1-1][y1-1].equals(mat[x][y]) && (x1-x)%2 == 0 && (y1-y)%2 == 0 )
 		mat[x1][y1] = mat[x][y];
 		mat[x][y] = z;
-		mat[x+1][y-1] = "-";
+		mat[x1+1][y1-1] = "-";
+		}
 	}
-	//(single)Jumping a black dsntwrk...
-	else if ( mat[x-1][y-1].equals("b") && !mat[x-1][y-1].equals(mat[x][y]) ){
+	//(single)Jumping a black 
+	else if ( mat[x1-1][y1-1].equals("b") && !mat[x1-1][y1-1].equals(mat[x][y]) && (x1-x)%2 == 0 && (y1-y)%2 == 0 ){
 		mat[x1][y1] = mat[x][y];
 		mat[x][y] = z;
-		mat[x-1][y-1] = "-";
+		mat[x1-1][y1-1] = "-";
 	}
-	else if ( mat[x+1][y+1].equals("b") && !mat[x-1][y-1].equals(mat[x][y]) ){
+	else if ( mat[x1+1][y1+1].equals("b") && !mat[x1-1][y1-1].equals(mat[x][y]) && (x1-x)%2 == 0 && (y1-y)%2 == 0 ){
 		mat[x1][y1] = mat[x][y];
 		mat[x][y] = z;
-		mat[x+1][y+1] = "-";
+		mat[x1+1][y1+1] = "-";
 	}
-	else if ( mat[x-1][y+1].equals("b") && !mat[x-1][y-1].equals(mat[x][y]) ){
+	else if ( mat[x1-1][y1+1].equals("b") && !mat[x1-1][y1-1].equals(mat[x][y]) && (x1-x)%2 == 0 && (y1-y)%2 == 0 ){
 		mat[x1][y1] = mat[x][y];
 		mat[x][y] = z;
-		mat[x-1][y+1] = "-";
+		mat[x1-1][y1+1] = "-";
 	}
-	else if ( mat[x+1][y-1].equals("b") && !mat[x-1][y-1].equals(mat[x][y]) ){
+	else if ( mat[x1+1][y1-1].equals("b") && !mat[x1-1][y1-1].equals(mat[x][y]) && (x1-x)%2 == 0 && (y1-y)%2 == 0 ){
 		mat[x1][y1] = mat[x][y];
 		mat[x][y] = z;
-		mat[x+1][y-1] = "-";
+		mat[x1+1][y1-1] = "-";
 	}
 	//Normal movement
-	else {
+	else if ((x1-x)%2 != 0 && (y1-y)%2 != 0) {
 	mat[x1][y1] = mat[x][y];
 	mat[x][y] = z;
 	}
