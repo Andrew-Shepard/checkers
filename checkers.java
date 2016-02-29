@@ -3,24 +3,26 @@ public class checkers {
 	public static void main(String[] args) {
 		Scanner reader = new Scanner(System.in);
 		//board
-		String[][] mat = {	{"x","r","x","r","x","r","x","r", },
-							{"r","x","r","x","r","x","r","x", },
-							{"x","r","x","r","x","r","x","r", },
-							{"-","x","-","x","-","x","-","x", },
-							{"x","-","x","-","x","-","x","-", },
-							{"b","x","b","x","b","x","b","x", },
-							{"x","b","x","b","x","b","x","b", },
-							{"b","x","b","x","b","x","b","x", },
+		String[][] mat = {	{"|","--","--","--","--","--","--","--","--","|",},
+							{"|","x","r","x","r","x","r","x","r","|" },
+							{"|","r","x","r","x","r","x","r","x","|" },
+							{"|","x","r","x","r","x","r","x","r","|" },
+							{"|","-","x","-","x","-","x","-","x","|" },
+							{"|","x","-","x","-","x","-","x","-","|" },
+							{"|","b","x","b","x","b","x","b","x","|" },
+							{"|","x","b","x","b","x","b","x","b","|" },
+							{"|","b","x","b","x","b","x","b","x","|" },
+							{"|","--","--","--","--","--","--","--","--","|",},
 								};
 		display(mat);
 		while(statusRed(mat) == true && statusBlack(mat) == true)
 		{	System.out.println(" ");
 			System.out.println("Enter first  (column,row) and the piece you want to move in " +
 								"secondwhere you would like to move it to in(column,row)");
-			int x1 = reader.nextInt() - 1;
-			int y1 = reader.nextInt() - 1;
-			int x = reader.nextInt() - 1;
-			int y = reader.nextInt() - 1;
+			int x1 = reader.nextInt() ;
+			int y1 = reader.nextInt() ;
+			int x = reader.nextInt() ;
+			int y = reader.nextInt() ;
 			move(mat, y1, x1, y , x);
 			display(mat);
 			
@@ -50,8 +52,8 @@ return false;
 }
 public static void display(String[][] mat){
 	//String alpha and numbers add the coordinate system for movement
-	String alpha = "12345678";
-	String numbers = "12345678";
+	String alpha = " 12345678 ";
+	String numbers = " 12345678 ";
 	for (int i = 0; i < mat.length; i++) {
 	 
 		for (int j = 0; j < mat[i].length; j++) {
@@ -61,7 +63,7 @@ public static void display(String[][] mat){
 		String temp = alpha.substring(0+i,i+1);
 		System.out.println(temp); 
 		}
-	for (int i = 0; i != 8; i++)
+	for (int i = 0; i!=10; i++)
 	{
 		String temp1 = numbers.substring(0+i,i+1);
 		System.out.print(temp1+"\t"); 
@@ -71,7 +73,7 @@ public static void display(String[][] mat){
 public static void move(String[][] mat, int x1, int y1, int x, int y){
 	String z = mat[x1][y1];
 	//moving forward error
-	if (z.equals("x")||mat[x][y].equals("x"))
+	if (z.equals("x")||mat[x][y].equals("x")||z.equals("--")||mat[x][y].equals("--")||z.equals("|")||mat[x][y].equals("|"))
 		System.out.println("You cant move there!");
 	//(single)Jumping a red 
 	
@@ -95,7 +97,7 @@ public static void move(String[][] mat, int x1, int y1, int x, int y){
 		}
 	}
 	else if (y1 != 0){
-		if ( mat[x1+1][y1-1].equals("r") && !mat[x1-1][y1-1].equals(mat[x][y]) && (x1-x)%2 == 0 && (y1-y)%2 == 0 )
+		if ( mat[x1+1][y1-1].equals("r") && !mat[x1-1][y1-1].equals(mat[x][y]) && (x1-x)%2 == 0 && (y1-y)%2 == 0 ){
 		mat[x1][y1] = mat[x][y];
 		mat[x][y] = z;
 		mat[x1+1][y1-1] = "-";
